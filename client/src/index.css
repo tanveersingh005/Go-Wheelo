@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+* {
+  font-family: "Outfit", sans-serif;
+  cursor: none !important;
+}
+
+/* Global styles */
+
+/* Instant theme toggle — no fade animations */
+.no-transition *,
+.no-transition *::before,
+.no-transition *::after {
+  transition: none !important;
+  animation: none !important;
+}
+
+@theme {
+  --color-primary: #3b82f6;
+  --color-primary-dull: #2563eb;
+  
+  --color-dark-bg: #09090b;
+  --color-dark-card: #18181b;
+  --color-dark-border: #27272a;
+
+  --color-light: #f4f4f5;
+  --color-light-bg: #fafafa;
+  --color-light-card: #ffffff;
+  --color-light-border: #e4e4e7;
+  --color-borderColor: #e4e4e7;
+}
+
+body {
+  @apply bg-light-bg text-zinc-900 bg-fixed;
+}
+
+.dark body {
+  @apply bg-dark-bg text-zinc-100;
+}
+
+/* Glassmorphism utility */
+.glass-panel {
+  @apply bg-white/70 backdrop-blur-xl border border-white/50 shadow-sm dark:bg-zinc-900/60 dark:border-zinc-800/80 dark:shadow-none;
+}
+
+.glass-nav {
+  @apply bg-white/80 backdrop-blur-lg border-b border-light-border dark:bg-dark-bg/80 dark:border-dark-border;
+}
+
+/* Base Form Inputs */
+.input {
+  @apply w-full border border-light-border rounded-lg px-4 py-3 text-sm bg-transparent outline-none transition-all duration-200 focus:ring-2 focus:ring-primary/50 dark:border-dark-border dark:focus:ring-primary/40 dark:text-zinc-200;
+}

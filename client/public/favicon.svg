@@ -1,0 +1,25 @@
+<svg width="256" height="256" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+  <!-- Minimalist Side Profile of a Luxury Sports Car -->
+  <g fill="none" stroke="#18181b" stroke-width="16" stroke-linecap="round" stroke-linejoin="round">
+    
+    <!-- Top Canopy / Body Line -->
+    <path d="M 30 140 
+             C 40 110, 80 80, 130 80 
+             C 170 80, 200 110, 220 130 
+             C 240 150, 240 160, 220 160
+             L 213 160" />
+             
+    <!-- Rear bumper downward curve to rear wheel arch -->
+    <path d="M 30 140 C 20 150, 20 160, 40 160 L 47 160" />
+
+    <!-- Side Skirt (between wheels) -->
+    <path d="M 103 160 L 157 160" />
+
+    <!-- Wheels -->
+    <circle cx="75" cy="160" r="28" />
+    <circle cx="185" cy="160" r="28" />
+
+    <!-- Window Sweep / Detail Line -->
+    <path d="M 130 80 C 100 80, 60 110, 50 120 L 120 120 C 140 120, 160 100, 130 80 Z" fill="#18181b" />
+  </g>
+</svg>

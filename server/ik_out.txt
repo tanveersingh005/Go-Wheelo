@@ -1,0 +1,6 @@
+typeof ImageKit: function
+typeof ImageKit.default: undefined
+Keys of ImageKit: ImageKit, DEFAULT_TIMEOUT, ImageKitError, APIError, APIConnectionError, APIConnectionTimeoutError, APIUserAbortError, NotFoundError, ConflictError, RateLimitError, BadRequestError, AuthenticationError, InternalServerError, PermissionDeniedError, UnprocessableEntityError, toFile, CustomMetadataFields, Files, SavedExtensions, Assets, Cache, Folders, Accounts, Beta, Webhooks
+typeof ik: object
+typeof ik.upload: undefined
+Keys of ik: customMetadataFields, files, savedExtensions, assets, cache, folders, accounts, beta, webhooks, helper, baseURL, timeout, logger, logLevel, fetchOptions, maxRetries, fetch, _options, privateKey, password, webhookSecret
