@@ -69,7 +69,7 @@
    ```
    Create a `.env` file in the `client` directory:
    ```env
-   VITE_API_URL=http://localhost:8001/api
+   VITE_API_URL=https://go-wheelo.onrender.com
    VITE_CURRENCY=$
    ```
    Start the client:

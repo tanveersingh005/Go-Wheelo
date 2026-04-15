@@ -16,7 +16,7 @@ const app = express()
 const server = createServer(app);
 const io = new Server(server, {
     cors: {
-        origin: "*", 
+        origin: "*",
         methods: ["GET", "POST"]
     }
 });
@@ -27,13 +27,16 @@ await connectDB()
 
 //Middleware //
 
-app.use(cors());
+app.use(cors({
+    origin: "https://go-wheelo.netlify.app",
+    credentials: true
+}));
 app.use(express.json());
 
-app.get('/' , (req,res) => res.send("Server is running"))
-app.use('/api/user' ,userRouter)
-app.use('/api/owner' , ownerRouter)
-app.use('/api/bookings' , bookingRouter)
+app.get('/', (req, res) => res.send("Server is running"))
+app.use('/api/user', userRouter)
+app.use('/api/owner', ownerRouter)
+app.use('/api/bookings', bookingRouter)
 app.use('/api/notifications', notificationRouter)
 app.use('/api/chat', chatRouter)
 
@@ -58,4 +61,4 @@ io.on("connection", (socket) => {
 
 const PORT = process.env.PORT || 8001;
 
-server.listen(PORT ,() => console.log(`Server running on port ${PORT}`));
+server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
