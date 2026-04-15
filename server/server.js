@@ -1,5 +1,7 @@
 import express from "express";
 import "dotenv/config";
+import dns from "dns";
+dns.setDefaultResultOrder("ipv4first");
 import cors from "cors";
 import connectDB from "./configs/db.js";
 import userRouter from "./routes/userRouter.js";
