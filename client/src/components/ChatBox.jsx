@@ -3,7 +3,10 @@ import { io } from "socket.io-client";
 import { useAppContext } from "../context/AppContext";
 import { motion, AnimatePresence } from "framer-motion";
 
-const socket = io(import.meta.env.VITE_API_URL || "http://localhost:8001");
+const socket = io(import.meta.env.VITE_API_URL || "http://localhost:8001", {
+    transports: ["websocket"],
+    autoConnect: true
+});
 
 const ChatBox = ({ receiverId, carId, carName, onClose }) => {
     const { user, token, axios, fetchUser } = useAppContext();
@@ -21,7 +24,26 @@ const ChatBox = ({ receiverId, carId, carName, onClose }) => {
 
         const convId = buildConvId(user._id.toString(), receiverId, carId);
         setConversationId(convId);
-        socket.emit("join_conversation", convId);
+
+        // Join room helper
+        const joinRoom = () => {
+            console.log("Socket joining conversation room:", convId);
+            socket.emit("join_conversation", convId);
+        };
+
+        // If socket is already connected, join immediately
+        if (socket.connected) {
+            joinRoom();
+        }
+
+        // Setup connect listener to join/rejoin room on connection or reconnection
+        socket.on("connect", joinRoom);
+
+        // Debug helper
+        const handleConnectError = (error) => {
+            console.error("Socket connection error:", error);
+        };
+        socket.on("connect_error", handleConnectError);
 
         const fetchMessages = async () => {
             try {
@@ -37,12 +59,18 @@ const ChatBox = ({ receiverId, carId, carName, onClose }) => {
 
         const handleNewMessage = (data) => {
             if (data.conversationId === convId) {
-                setMessages((prev) => [...prev, data]);
+                setMessages((prev) => {
+                    // Avoid duplicate messages
+                    if (prev.some((m) => m._id === data._id)) return prev;
+                    return [...prev, data];
+                });
             }
         };
         socket.on("receive_message", handleNewMessage);
 
         return () => {
+            socket.off("connect", joinRoom);
+            socket.off("connect_error", handleConnectError);
             socket.off("receive_message", handleNewMessage);
         };
     }, [user, receiverId, carId]);
