@@ -3,7 +3,7 @@ import { io } from "socket.io-client";
 import { useAppContext } from "../context/AppContext";
 import { motion, AnimatePresence } from "framer-motion";
 
-const socket = io(import.meta.env.VITE_API_URL || "https://go-wheelo.onrender.com");
+const socket = io(import.meta.env.VITE_API_URL || "http://localhost:8001");
 
 const ChatBox = ({ receiverId, carId, carName, onClose }) => {
     const { user, token, axios, fetchUser } = useAppContext();

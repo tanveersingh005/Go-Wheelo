@@ -1,4 +1,8 @@
 import nodemailer from "nodemailer";
+import dns from "dns";
+
+// Prevent IPv6 crashes by forcing IPv4 lookups before nodemailer initializes
+dns.setDefaultResultOrder("ipv4first");
 
 const transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
