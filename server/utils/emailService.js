@@ -5,19 +5,14 @@ import dns from "dns";
 dns.setDefaultResultOrder("ipv4first");
 
 const transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com",
-    port: 587,
-    secure: false, // TLS requires secure false on port 587
+    service: "gmail",   // Nodemailer Gmail preset — uses port 465 with SSL automatically
     auth: {
         user: process.env.GMAIL_USER,
         pass: process.env.GMAIL_PASS,
     },
-    tls: {
-        rejectUnauthorized: false
-    },
-    connectionTimeout: 10000,   // 10s to establish connection
-    greetingTimeout: 10000,     // 10s for SMTP greeting
-    socketTimeout: 15000,       // 15s for socket inactivity
+    connectionTimeout: 10000,
+    greetingTimeout: 10000,
+    socketTimeout: 15000,
 });
 
 // Verify connection configuration
