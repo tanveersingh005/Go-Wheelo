@@ -134,9 +134,7 @@ export const deleteCar = async (req, res) => {
             return res.json({ success: false, message: "Unauthorized" });
         }
 
-        car.owner = null; // Remove reference to owner
-        car.isAvailable = false; // Mark car as unavailable
-        await car.remove();
+        await Car.findByIdAndDelete(carId);
         res.json({ success: true, message: "Car deleted successfully" });
     } catch (error) {
         console.log(error.message);
