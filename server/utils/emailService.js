@@ -14,7 +14,10 @@ const transporter = nodemailer.createTransport({
     },
     tls: {
         rejectUnauthorized: false
-    }
+    },
+    connectionTimeout: 10000,   // 10s to establish connection
+    greetingTimeout: 10000,     // 10s for SMTP greeting
+    socketTimeout: 15000,       // 15s for socket inactivity
 });
 
 // Verify connection configuration
@@ -28,6 +31,13 @@ transporter.verify((error, success) => {
 
 export const sendOTPEmail = async (email, otp) => {
     console.log(`Attempting to send OTP to ${email}...`);
+
+    // Check if credentials are configured
+    if (!process.env.GMAIL_USER || !process.env.GMAIL_PASS) {
+        console.error("GMAIL_USER or GMAIL_PASS env vars are missing!");
+        return false;
+    }
+
     const mailOptions = {
         from: `"GoWheelo Support" <${process.env.GMAIL_USER}>`,
         to: email,
@@ -75,7 +85,12 @@ export const sendOTPEmail = async (email, otp) => {
     };
 
     try {
-        const info = await transporter.sendMail(mailOptions);
+        // Race against a 20s timeout so the HTTP request never hangs
+        const sendPromise = transporter.sendMail(mailOptions);
+        const timeoutPromise = new Promise((_, reject) =>
+            setTimeout(() => reject(new Error("Email send timeout after 20s")), 20000)
+        );
+        const info = await Promise.race([sendPromise, timeoutPromise]);
         console.log("Email sent successfully:", info.response);
         return true;
     } catch (error) {
@@ -84,3 +99,4 @@ export const sendOTPEmail = async (email, otp) => {
         return false;
     }
 };
+
