@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GoWheelo Project Summary</title>
+  <style>
+    :root {
+      --bg: #0b1020;
+      --panel: #121a2b;
+      --panel-2: #1a243d;
+      --border: #2b3a5d;
+      --text: #ebf1ff;
+      --muted: #b4c0d6;
+      --accent: #6ee7f9;
+      --accent-2: #8b5cf6;
+      --green: #34d399;
+      --yellow: #fbbf24;
+      --red: #f87171;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(135deg, #0b1020, #111827 48%, #0f172a);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 32px;
+    }
+
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      background: rgba(17, 24, 39, 0.95);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+      overflow: hidden;
+    }
+
+    .header {
+      background: linear-gradient(90deg, rgba(110, 231, 249, 0.10), rgba(139, 92, 246, 0.18));
+      padding: 30px 40px 20px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: 42px;
+      line-height: 1.1;
+    }
+
+    .subtitle {
+      margin: 0;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .content {
+      padding: 30px 40px 40px;
+    }
+
+    section {
+      margin-bottom: 24px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 22px 24px;
+    }
+
+    h2 {
+      margin: 0 0 16px;
+      font-size: 24px;
+      color: var(--accent);
+    }
+
+    h3 {
+      margin: 18px 0 10px;
+      font-size: 18px;
+      color: #dfe8ff;
+    }
+
+    p, li {
+      color: var(--text);
+      font-size: 15px;
+    }
+
+    ul {
+      margin: 10px 0 0 20px;
+      padding: 0;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(250px, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      background: rgba(18, 26, 43, 0.9);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px;
+    }
+
+    .tag {
+      display: inline-block;
+      background: rgba(110, 231, 249, 0.12);
+      color: var(--accent);
+      border: 1px solid rgba(110, 231, 249, 0.3);
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 12px;
+      margin: 2px 6px 2px 0;
+      font-weight: 700;
+    }
+
+    .badges {
+      margin-top: 12px;
+    }
+
+    .highlight {
+      background: rgba(52, 211, 153, 0.08);
+      border-left: 4px solid var(--green);
+      padding: 12px 14px;
+      border-radius: 8px;
+      color: #dcfce7;
+    }
+
+    .quote {
+      font-size: 16px;
+      color: #dfe8ff;
+      margin: 0;
+      padding-left: 14px;
+      border-left: 3px solid var(--accent-2);
+    }
+
+    @media (max-width: 760px) {
+      .grid { grid-template-columns: 1fr; }
+      body { padding: 18px; }
+      .header, .content { padding-left: 20px; padding-right: 20px; }
+      h1 { font-size: 30px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="header">
+      <div class="eyebrow">Project Summary</div>
+      <h1>GoWheelo</h1>
+      <p class="subtitle">Premium peer-to-peer car rental platform built on the MERN stack</p>
+      <div class="badges">
+        <span class="tag">React 18</span>
+        <span class="tag">Node.js</span>
+        <span class="tag">Express</span>
+        <span class="tag">MongoDB</span>
+        <span class="tag">Socket.io</span>
+        <span class="tag">Tailwind CSS</span>
+      </div>
+    </div>
+
+    <div class="content">
+      <section>
+        <h2>1. What this project is</h2>
+        <p>
+          GoWheelo is a premium peer-to-peer car rental app where a vehicle owner can list a car, and a customer can view, book, and chat with the owner before renting. It combines rental booking workflow, OTP-based authentication, live messaging, and a polished premium UI to simulate a real-world marketplace experience.
+        </p>
+        <p class="quote">
+          “This is not just a booking app — it is a full digital rental marketplace with trust, communication, and payment simulation built in.”
+        </p>
+      </section>
+
+      <section>
+        <h2>2. Core features implemented</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>Secure Authentication</h3>
+            <ul>
+              <li>Signup with email verification and 6-digit OTP</li>
+              <li>Password hashing using bcrypt</li>
+              <li>JWT-based authentication with cookie-based session</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>Live Communication</h3>
+            <ul>
+              <li>Real-time chat between renter and host</li>
+              <li>Socket.io rooms for conversation-based messaging</li>
+              <li>WebSocket transport optimization for reconnection stability</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>Booking & Availability</h3>
+            <ul>
+              <li>Booking system with date-based search and car details</li>
+              <li>Collision detection to prevent overlapping bookings</li>
+              <li>Host can accept or reject booking requests</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>Owner Dashboard</h3>
+            <ul>
+              <li>Add new cars to inventory</li>
+              <li>View current bookings and manage them</li>
+              <li>Delete listings safely through database-safe delete logic</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>Payments & Checkout Simulation</h3>
+            <ul>
+              <li>Hybrid checkout panel with payment inputs</li>
+              <li>UPI QR code generation using qrcode.react</li>
+              <li>Currency conversion logic for USD/INR display</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>Premium Frontend UX</h3>
+            <ul>
+              <li>Glassmorphism aesthetic and dark/light theme</li>
+              <li>Responsive layout for desktop and mobile</li>
+              <li>Animations via Framer Motion and GSAP</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>3. Tech stack used</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>Frontend</h3>
+            <ul>
+              <li>React 18 + Vite</li>
+              <li>React Router DOM for client-side routing</li>
+              <li>Tailwind CSS for modern styling</li>
+              <li>Axios for HTTP requests</li>
+              <li>Framer Motion + GSAP for interactive UI motions</li>
+              <li>Socket.io Client for real-time messaging</li>
+              <li>qrcode.react for dynamic QR code generation</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>Backend</h3>
+            <ul>
+              <li>Node.js with Express.js</li>
+              <li>MongoDB with Mongoose ODM</li>
+              <li>Socket.io server for chat events</li>
+              <li>JWT for auth tokens</li>
+              <li>bcrypt for password security</li>
+              <li>Brevo REST API for OTP mail delivery</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>4. Architecture and how it works</h2>
+        <p>
+          The frontend is built as a single-page React application using route-based pages such as Home, Cars, CarDetails, MyBookings, and BecomeAHost. Shared state and app-level configuration are managed in AppContext, while theme settings are controlled in ThemeContext. This makes the application feel like a modern marketplace UI with a smooth user journey.
+        </p>
+        <p>
+          The backend runs Express APIs for authentication, vehicle operations, booking management, and payment simulation. MongoDB stores user profiles, cars, and booked slots. Real-time events are powered by Socket.io so renters and owners can communicate instantly without page refresh. Important validations happen on the server side to ensure date conflicts, secure access, and token-based authorization.
+        </p>
+      </section>
+
+      <section>
+        <h2>5. Real-world engineering decisions and problem-solving</h2>
+        <ul>
+          <li><strong>Email delivery challenge:</strong> SMTP ports were blocked on hosting platforms, so Brevo’s secure HTTP API was used instead of traditional SMTP.</li>
+          <li><strong>Realtime chat reliability:</strong> Socket.io was configured to use websocket transport only for more stable live communication.</li>
+          <li><strong>Booking conflict prevention:</strong> Logic ensured no overlapping dates for the same vehicle.</li>
+          <li><strong>Modern Mongoose compatibility:</strong> Deprecated .remove() was replaced with safe query methods such as findByIdAndDelete.</li>
+          <li><strong>SPA routing on Netlify:</strong> Added a _redirects file to route all frontend paths back to index.html.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>6. Why this project stands out</h2>
+        <div class="highlight">
+          This project demonstrates a complete end-to-end product mindset: frontend UX, backend APIs, database modeling, secure auth, real-time communication, role-based flows, and deployment-aware engineering decisions.
+        </div>
+        <p>
+          It is especially strong for interviews because it shows both product thinking and technical depth. You are not just building UI — you are solving real-world issues such as trust, booking accuracy, communication, security, and production hosting constraints.
+        </p>
+      </section>
+
+      <section>
+        <h2>7. Interview-ready summary</h2>
+        <p>
+          I built GoWheelo as a full-stack peer-to-peer car rental platform where vehicle owners can list their cars and users can book them securely. The application includes OTP-based authentication, JWT-protected routes, real-time chat via Socket.io, and a booking engine that prevents date conflicts. I used React with Tailwind for a premium UI, Node.js and Express for the backend, and MongoDB for persistence. I also integrated Brevo for email OTP delivery and qrcode.react for payment simulation. The project reflects both frontend polish and backend engineering discipline, which is exactly what companies look for in a modern full-stack developer.
+        </p>
+      </section>
+    </div>
+  </div>
+</body>
+</html>
